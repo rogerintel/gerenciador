@@ -6,13 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-	<%
-		String empresa = (String) request.getAttribute("empresa");
-		System.out.println(empresa);
-	%>
-	Empresa
-	<%=empresa%>
-	cadastrada com sucesso!
+<body>Empresa ${empresa }cadastrada com sucesso!
 </body>
 </html>
