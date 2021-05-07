@@ -8,7 +8,8 @@
 </head>
 <body>
 
-Dados Empresa
+Dados Empresa:
+<br />
 	<form action=${linkEmpresa } method="post">
 		Nome: <input type="text" name="nome"> <br />
 		Data: <input type="text" name="data"> <br />
