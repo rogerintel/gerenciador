@@ -1,4 +1,4 @@
-package br.com.alura.gerenciador.servlet;
+package br.com.alura.gerenciador.acao;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -6,23 +6,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class NovaEmpresaServlet
- */
-@WebServlet("/novaEmpresa")
-public class NovaEmpresaServlet extends HttpServlet {
+import br.com.alura.gerenciador.dominio.Banco;
+import br.com.alura.gerenciador.dominio.Empresa;
 
-	private static final long serialVersionUID = 1L;
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		System.out.println("Cadastrando nova empresa");
-
+public class NovaEmpresa {
+	
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nomeEmpresa = request.getParameter("nome");
 		String paramDataEmpresa = request.getParameter("data");
 
@@ -43,12 +35,8 @@ public class NovaEmpresaServlet extends HttpServlet {
 
 		request.setAttribute("empresa", empresa.getNome());
 
-		response.sendRedirect("listaEmpresas");
+		response.sendRedirect("entrada?acao=ListaEmpresas");
 
-//		//chamar o JSP ou Servlet
-//		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas");
-//		request.setAttribute("empresa", empresa.getNome());
-//		rd.forward(request, response);
 	}
 
 }

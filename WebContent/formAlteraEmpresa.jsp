@@ -2,12 +2,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 
-<c:url value="/alteraEmpresa" var="linkServletNovaEmpresa"/>
+<c:url value="/entrada?acao=AlteraEmpresa" var="linkServletNovaEmpresa"/>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
