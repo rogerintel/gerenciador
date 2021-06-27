@@ -1,27 +1,33 @@
-<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page
-	import="java.util.List, br.com.alura.gerenciador.servlet.Empresa"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.List, br.com.alura.gerenciador.servlet.Empresa"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta charset="ISO-8859-1">
+<title>Java Standard Taglib</title>
 </head>
 <body>
 
-	Lista de Empresas:
-	<br /><br />
-	<c:forEach items="${empresas }" var="empresa">
-		<li>
-		${empresa.nome } - <fmt:formatDate value="${empresa.data }" pattern="dd/MM/yyyy"/>
-		<a href="/gerenciador/visualizarEmpresa?id=${empresa.id }" >editar</a>
-		<a href="/gerenciador/removerEmpresa?id=${empresa.id }" >remover</a>
-		</li>
-	</c:forEach>
+	<c:if test="${not empty empresa}">
+		Empresa ${ empresa } cadastrada com sucesso!
+	</c:if>
+
+	Lista de empresas: <br />
+
+	<ul>
+		<c:forEach items="${empresas}" var="empresa">
+
+			<li>
+				${empresa.nome } - <fmt:formatDate value="${empresa.dataAbertura }" pattern="dd/MM/yyyy"/>
+				<a href="/gerenciador/mostraEmpresa?id=${empresa.id }">edita</a>
+				<a href="/gerenciador/removeEmpresa?id=${empresa.id }">remove</a>
+			</li>
+		</c:forEach>
+	</ul>
+
 </body>
 </html>
