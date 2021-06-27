@@ -6,7 +6,11 @@ public class Empresa {
 
 	private Integer id;
 	private String nome;
-	private Date dataAbertura = new Date();
+	private Date dataAbertura;
+	
+	public Empresa() {
+		setDataAbertura(new Date());
+	}
 
 	public Integer getId() {
 		return id;
@@ -17,6 +21,7 @@ public class Empresa {
 	public String getNome() {
 		return nome;
 	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -24,7 +29,10 @@ public class Empresa {
 	public Date getDataAbertura() {
 		return dataAbertura;
 	}
+	
 	public void setDataAbertura(Date dataAbertura) {
 		this.dataAbertura = dataAbertura;
+		
 	}
+	
 }
