@@ -13,8 +13,9 @@ import br.com.alura.gerenciador.dominio.Banco;
 import br.com.alura.gerenciador.dominio.Empresa;
 
 public class AlteraEmpresa implements Acao {
-	
-	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	public String execute(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String nomeEmpresa = request.getParameter("nome");
 		String paramDataEmpresa = request.getParameter("data");
 		String paramId = request.getParameter("id");

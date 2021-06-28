@@ -19,7 +19,7 @@ public class Banco {
 		empresa2.setNome("Caelum");
 		lista.add(empresa);
 		lista.add(empresa2);
-		
+
 		listaUsuario.add(new Usuario("rogerio", "12345"));
 		listaUsuario.add(new Usuario("samara", "12345"));
 	}
@@ -28,12 +28,12 @@ public class Banco {
 		empresa.setId(Banco.chaveSequencial++);
 		Banco.lista.add(empresa);
 	}
-	
+
 	public boolean existeUsusario(Usuario usuario) {
 		return listaUsuario.contains(usuario);
 	}
 
-	public List<Empresa> getEmpresas(){
+	public List<Empresa> getEmpresas() {
 		return Banco.lista;
 	}
 
@@ -41,10 +41,10 @@ public class Banco {
 
 		Iterator<Empresa> it = lista.iterator();
 
-		while(it.hasNext()) {
+		while (it.hasNext()) {
 			Empresa emp = it.next();
 
-			if(emp.getId() == id) {
+			if (emp.getId() == id) {
 				it.remove();
 			}
 		}
@@ -52,7 +52,7 @@ public class Banco {
 
 	public Empresa buscaEmpresaPelaId(Integer id) {
 		for (Empresa empresa : lista) {
-			if(empresa.getId() == id) {
+			if (empresa.getId() == id) {
 				return empresa;
 			}
 		}

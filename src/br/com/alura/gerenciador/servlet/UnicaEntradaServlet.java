@@ -28,15 +28,20 @@ public class UnicaEntradaServlet extends HttpServlet {
 
 		String paramAcao = request.getParameter("acao");
 
-		String nomeDaClasse = "br.com.alura.gerenciador.acao." + paramAcao;
+		if (!(paramAcao.equals("Login") || paramAcao.equals("LoginForm"))
+				&& request.getSession().getAttribute("usuarioLogado") == null) {
+			response.sendRedirect("entrada?acao=LoginForm");
+			return;
+		}
 
 		String nome = null;
 
 		try {
-			Class<?> classe = Class.forName(nomeDaClasse);
-			Acao acao = (Acao) classe.getDeclaredConstructor().newInstance();
+			Acao acao = (Acao) Class.forName("br.com.alura.gerenciador.acao." + paramAcao).getDeclaredConstructor()
+					.newInstance();
 			nome = acao.execute(request, response);
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | IllegalArgumentException
+				| InvocationTargetException | NoSuchMethodException | SecurityException e) {
 			throw new ServletException(e);
 		}
 
