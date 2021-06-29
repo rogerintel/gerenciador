@@ -17,6 +17,14 @@ import javax.servlet.http.HttpServletResponse;
 //@WebFilter("/entrada")
 public class AutorizacaoFilter implements Filter {
 
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
+	}
+
+	@Override
+	public void destroy() {
+	}
+
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
