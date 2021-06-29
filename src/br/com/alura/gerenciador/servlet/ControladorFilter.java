@@ -3,8 +3,13 @@ package br.com.alura.gerenciador.servlet;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,24 +20,17 @@ import br.com.alura.gerenciador.acao.Acao;
 /**
  * Servlet implementation class UnicaEntradaServlet
  */
-@WebServlet("/entrada")
-public class UnicaEntradaServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+//@WebFilter("/entrada")
+public class ControladorFilter implements Filter {
 
-	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void service(HttpServletRequest request, HttpServletResponse response)
+	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain)
 			throws ServletException, IOException {
 
-		String paramAcao = request.getParameter("acao");
+		System.out.println("ControladorFilter");
 
-		if (!(paramAcao.equals("Login") || paramAcao.equals("LoginForm"))
-				&& request.getSession().getAttribute("usuarioLogado") == null) {
-			response.sendRedirect("entrada?acao=LoginForm");
-			return;
-		}
+		HttpServletRequest request = (HttpServletRequest) servletRequest;
+		HttpServletResponse response = (HttpServletResponse) servletResponse;
+		String paramAcao = request.getParameter("acao");
 
 		String nome = null;
 
